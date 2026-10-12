@@ -1,5 +1,4 @@
-
-import os
+import subprocess
 import time
 from datetime import datetime
 
@@ -18,10 +17,21 @@ while True:
         check_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         print("Check time:", check_time)
 
-        # Send one ping request to the server
-        output = os.popen(f"ping -n 1 {server}").read()
+        # Send one ping request with error handling
+        try:
+            result = subprocess.run(
+                ["ping", "-n", "1", "-w", "2000", server],
+                capture_output=True,
+                text=True,
+                timeout=5
+            )
 
-        # Check whether the ping was successful
+            output = result.stdout + result.stderr
+
+        except subprocess.TimeoutExpired:
+            output = ""
+
+        # Check whether the ping received a successful reply
         if "bytes=" in output and "TTL=" in output:
             status = "CONNECTION OK"
             latency = "Not available"
@@ -51,10 +61,13 @@ while True:
         print("Latency:", latency)
 
         # Save the result to the log file
-        with open("network_log.txt", "a") as file:
-            file.write(
-                f"{check_time} | {server} | {status} | Latency: {latency}\n"
-            )
+        try:
+            with open("network_log.txt", "a") as file:
+                file.write(
+                    f"{check_time} | {server} | {status} | Latency: {latency}\n"
+                )
+        except OSError as error:
+            print("Could not write to log file:", error)
 
     # Wait 60 seconds before the next check
     print("\nNetwork check complete. Waiting 60 seconds...")
