@@ -1,82 +1,108 @@
-# \# Python Network Connectivity Monitor
+# &#x20;**Python Network Connectivity Monitor**
 
 
 
-\## About
+## &#x20;**Project Overview**
+
+The Python Network Connectivity Monitor is a beginner-friendly network automation project that checks connectivity to multiple servers using ping requests.
 
 
 
-This project is a Python-based network connectivity monitor.
+It monitors server availability, extracts response latency, calculates packet loss, and stores monitoring results in a log file with timestamps.
 
 
 
-It checks whether important network destinations are reachable.
+#### &#x20;**Features**
+
+\- Monitors multiple targets: `1.1.1.1`, `8.8.8.8`, and `google.com`
+
+\- Checks connectivity using ping requests
+
+\- Displays connection status
+
+\- Extracts response latency
+
+\- Calculates packets sent, received, lost, and packet-loss percentage
+
+\- Records timestamps for monitoring checks
+
+\- Saves results to `network\_log.txt`
+
+\- Repeats monitoring every 60 seconds
+
+\- Handles ping timeouts and log-file write errors
 
 
 
-\## Purpose
-
-
-
-I am building this project to learn:
-
-
-
-\- Python
-
-\- Computer networking
-
-\- Network troubleshooting
-
-\- Linux
-
-\- Git
-
-\- GitHub
-
-\- Cloud fundamentals
-
-
-
-\## Current Features
-
-
-
-\- Checks network connectivity
-
-\- Uses ping to test connectivity
-
-\- Detects connection failures
-
-
-
-\## Technologies
-
-
+#### &#x20;**Technologies Used**
 
 \- Python
 
-\- Networking
+\- Python `subprocess` module
 
-\- Git
+\- Python `datetime` module
 
-\- GitHub
+\- Python `time` module
+
+\- Basic networking concepts: ICMP ping, latency, and packet loss
+
+\- Git and GitHub for version control
 
 
 
-\## Future Improvements
+#### &#x20;**Requirements**
+
+\- Python 3 installed
+
+\- Windows operating system
+
+\- An active network connection for external connectivity checks
 
 
 
-\- Monitor multiple destinations
+#### &#x20;**How to Run**
 
-\- Add timestamps
+1\. Clone or download this repository.
 
-\- Create log files
+2\. Open PowerShell in the project folder.
 
-\- Run automatically
+3\. Run:
 
-\- Add network statistics
 
-\- Integrate with AWS monitoring
+
+&#x20;  `python network\_monitor.py`
+
+
+
+4\. View the results in the terminal.
+
+5\. Monitoring records are appended to `network\_log.txt`.
+
+
+
+Press `Ctrl + C` to stop the monitoring loop.
+
+
+
+#### &#x20;**Learning Outcomes**
+
+Through this project, I practised Python scripting, network connectivity testing, error handling, latency extraction, packet-loss calculation, file logging, and basic version control.
+
+
+
+#### &#x20;**Future Improvements**
+
+\- Calculate average latency
+
+\- Improve packet-loss measurement
+
+\- Add configurable monitoring intervals
+
+\- Generate monitoring reports
+
+\- Explore cloud-based monitoring and alerting
+
+
+
+
 
